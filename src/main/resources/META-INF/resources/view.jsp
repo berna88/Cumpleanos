@@ -5,7 +5,7 @@
 	}
 
 	.body-cumple {
-		background: #333;
+		background: red;
 		height: 250px;
     	width: 100%;
     	display: block;
@@ -17,23 +17,25 @@
 		width: 100%;
     	height: 100%;
     	left: auto;
+    	background: green;
 	}
- 
-	.body-cumple ul > li {
-		width: 25%;
-		list-style-type: none;
-		position: absolute;
-		top: 0;
+ .body-cumple > ul > li.perfil{
+ background: green;
+ width: 25%;
+ list-style-type: none;
+	position: absolute;	
+	top: 0;
 		padding: 20px;
 		height: 200px; 
 		opacity: 0;
-		padding-top: 40px;
-		text-align: center;
-		transition: 1s opacity; 
-	}
+		transition: 1s opacity;
+	
+ }
+ 
 
-	.active {
+	.body-cumple > ul#c > li.perfil.active {
 		opacity: 1;
+		transition: 1s opacity;
 	}
   
 	.body-cumple p {
@@ -79,21 +81,21 @@
 	var max = $('.body-cumple > #c > li').length;
 	console.log(max);
 	 
-		$(".body-cumple #c > li").eq(i).addClass('active').css('left','0');
-		$(".body-cumple #c > li").eq(i + 1).addClass('active').css('left','25%');
-		$(".body-cumple #c > li").eq(i + 2).addClass('active').css('left','50%');
-		$(".body-cumple #c > li").eq(i + 3).addClass('active').css('left','75%');
+		$(" #c > .perfil").eq(i).addClass('active').css('left','0');
+		$(" #c > .perfil").eq(i + 1).addClass('active').css('left','25%');
+		$(" #c > .perfil").eq(i + 2).addClass('active').css('left','50%');
+		$(" #c > .perfil").eq(i + 3).addClass('active').css('left','75%');
 	 
 
 		setInterval(function(){ 
 
 			$(".body-cumple #c > li").removeClass('active');
 
-			$(".body-cumple #c > li").eq(i).css('transition-delay','0.25s');
-			$(".body-cumple #c > li").eq(i + 1).css('transition-delay','0.5s');
-			$(".body-cumple #c > li").eq(i + 2).css('transition-delay','0.75s');
-			$(".body-cumple #c > li").eq(i + 3).css('transition-delay','1s');
-
+			$(" #c > .perfil").eq(i).css('transition-delay','0.25s');
+			$(" #c > .perfil").eq(i + 1).css('transition-delay','0.5s');
+			$(" #c > .perfil").eq(i + 2).css('transition-delay','0.75s');
+			$(" #c > .perfil").eq(i + 3).css('transition-delay','1s');
+			console.log(i);
 			if (i < max-4) {
 				i = i+4; 
 			}
@@ -102,10 +104,10 @@
 				i = 0; 
 			}  
 
-			$(".body-cumple #c > li").eq(i).css('left','0').addClass('active').css('transition-delay','1.25s');
-			$(".body-cumple #c > li").eq(i + 1).css('left','25%').addClass('active').css('transition-delay','1.5s');
-			$(".body-cumple #c > li").eq(i + 2).css('left','50%').addClass('active').css('transition-delay','1.75s');
-			$(".body-cumple #c > li").eq(i + 3).css('left','75%').addClass('active').css('transition-delay','2s');
+			$(" #c > .perfil").eq(i).css('left','0').addClass('active').css('transition-delay','1.25s');
+			$(" #c > .perfil").eq(i + 1).css('left','25%').addClass('active').css('transition-delay','1.5s');
+			$(" #c > .perfil").eq(i + 2).css('left','50%').addClass('active').css('transition-delay','1.75s');
+			$(" #c > .perfil").eq(i + 3).css('left','75%').addClass('active').css('transition-delay','2s');
 		
 		}, timer);
 	 
