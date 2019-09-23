@@ -1,4 +1,11 @@
+<%@page import="com.liferay.portal.kernel.model.Image"%>
+<%@page import="com.liferay.portal.kernel.service.ImageLocalServiceUtil"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.liferay.portal.kernel.model.User"%>
 <%@ include file="/init.jsp" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <style>
 	.body-cumple {
 		box-sizing: border-box;
@@ -70,6 +77,16 @@
 
 	</ul>
 </div>	
+<% List<User> users = (List<User>) request.getAttribute("Users"); 
+for(User userst : users){
+%>
+<%long portraitId = userst.getPortraitId();
+Image image = ImageLocalServiceUtil.getImage(portraitId);
+
+%>
+
+<% }%>	
+
 
 	
 	<script>
