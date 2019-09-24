@@ -1,4 +1,13 @@
+<%@page import="com.liferay.portal.kernel.util.WebKeys"%>
+<%@page import="com.liferay.portal.kernel.theme.ThemeDisplay"%>
+<%@page import="com.liferay.portal.kernel.model.Image"%>
+<%@page import="com.liferay.portal.kernel.service.ImageLocalServiceUtil"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.liferay.portal.kernel.model.User"%>
 <%@ include file="/init.jsp" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <style>
 	.body-cumple {
 		box-sizing: border-box;
@@ -71,7 +80,17 @@
 		<li class="perfil"><p><strong>12</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li> 
 
 	</ul>
-</div>	
+</div>
+<%ThemeDisplay themeDisplay23 =(ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY); 
+List<User> users = (List<User>) request.getAttribute("Users");
+%>
+<%=users.size() %>
+<%for(User users23:users ){ %>
+<%= users23.getFullName()%>
+<img src='<%= users23.getPortraitURL(themeDisplay23)%>' />
+<%} %>
+
+
 
 	
 	<script>

@@ -6,8 +6,10 @@ import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.model.Image;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.service.ImageLocalServiceUtil;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 
 import java.io.IOException;
@@ -59,6 +61,9 @@ public class CumpleanosPortlet extends MVCPortlet {
 				  cumpleanos = new Cumpleanos(todayAsString, "America/Montreal", "MM/dd/yyyy");
 				  if(cumpleanos.isBirthday()) {
 					  usersFilter.add(user);
+					  long po = user.getPortraitId();
+					  Image image = ImageLocalServiceUtil.getImage(po);
+					  log.info(image);
 				  }
 			  	  }catch (PortalException e) { 
 			  	// TODO Auto-generated catch block
