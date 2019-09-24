@@ -1,3 +1,5 @@
+<%@page import="com.liferay.portal.kernel.util.WebKeys"%>
+<%@page import="com.liferay.portal.kernel.theme.ThemeDisplay"%>
 <%@page import="com.liferay.portal.kernel.model.Image"%>
 <%@page import="com.liferay.portal.kernel.service.ImageLocalServiceUtil"%>
 <%@page import="java.util.ArrayList"%>
@@ -76,16 +78,16 @@
 		<li class="perfil"><p><strong>12</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li> 
 
 	</ul>
-</div>	
-<% List<User> users = (List<User>) request.getAttribute("Users"); 
-for(User userst : users){
+</div>
+<%ThemeDisplay themeDisplay23 =(ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY); 
+List<User> users = (List<User>) request.getAttribute("Users");
 %>
-<%long portraitId = userst.getPortraitId();
-Image image = ImageLocalServiceUtil.getImage(portraitId);
+<%=users.size() %>
+<%for(User users23:users ){ %>
+<%= users23.getFullName()%>
+<img src='<%= users23.getPortraitURL(themeDisplay23)%>' />
+<%} %>
 
-%>
-
-<% }%>	
 
 
 	
