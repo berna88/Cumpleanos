@@ -1,4 +1,4 @@
-package com.consistent.cuervo.constants;
+package com.consistent.cumpleanos.constants;
 
 /**
  * @author bernardohernadez

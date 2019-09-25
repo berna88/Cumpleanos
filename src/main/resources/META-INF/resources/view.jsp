@@ -8,127 +8,128 @@
 <%@ include file="/init.jsp" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<style>
-	.body-cumple {
-		box-sizing: border-box;
-	}
 
-	.body-cumple {
-		background: red;
-		height: 250px;
-    	width: 100%;
-    	display: block;
-    	margin: auto;
-	}
 
-	.body-cumple > ul {
-		position: relative;
-		width: 100%;
-    	height: 100%;
-    	left: auto;
-    	background: green;
-	}
- .body-cumple > ul > li.perfil{
- background: green;
- width: 25%;
- list-style-type: none;
-	position: absolute;	
-	top: 0;
-		padding: 20px;
-		height: 200px; 
-		opacity: 0;
-		transition: 1s opacity;
-	
- }
- 
-
-	.body-cumple > ul#c > li.perfil.active {
-		opacity: 1;
-		transition: 1s opacity;
-	}
-  
-	.body-cumple p {
-		font-family: sans-serif;
-		font-size: 13px;
-    	color: #646566;
-		line-height: 1.5em;
-	}
-
-	 .body-cumple strong { 
-    color: #fff;
-    font-weight: 700;
-		font-size: 60px; 
-    line-height: 100px; 
-	}
-</style>
-<div class="body-cumple">
-<ul id="c"> 
-		
-		<li class="perfil"><p><strong>1</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>2</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>3</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>4</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-
-		<li class="perfil"><p><strong>5</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>6</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>7</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>8</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li> 
-
-		<li class="perfil"><p><strong>9</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>10</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>11</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
-		<li class="perfil"><p><strong>12</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li> 
-
-	</ul>
-</div>
-<%ThemeDisplay themeDisplay23 =(ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY); 
+		<%ThemeDisplay themeDisplay23 =(ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY); 
 List<User> users = (List<User>) request.getAttribute("Users");
 %>
-<%=users.size() %>
-<%for(User users23:users ){ %>
-<%= users23.getFullName()%>
-<img src='<%= users23.getPortraitURL(themeDisplay23)%>' />
-<%} %>
 
+	
+	
+	
+	<div class="cumple container-fluid mt-5">
 
+  <!-- Grid row -->
+  <div class="row">
 
+    <!-- Grid column -->
+    <div class="col-md-12 mb-4">
+
+      <div class="container text-center my-3">
+        <h2>Cumpleaños</h2>
+        <div class="row mx-auto my-auto">
+          <div id="recipeCarousel2" class="carousel slide w-100 " data-ride="carousel">
+            <div class="carousel-inner w-100 vv-3" role="listbox">
+            <% int us=1; %>
+            <%for(User users23:users ){ %>
+              <% if (us++ <= 1) {%>
+             <!--   <%=us++ %>-->
+              <div class="carousel-item active">
+              <% }else{%>
+              <div class="carousel-item ">
+               <!--<%=us++ %>-->
+              <%} %>
+                <div class=" col-sm-12 col-md-12 col-lg-3">
+                 <div class="card mb-2">
+
+            <img class="d-block img-fluid card-img-top"
+                    src='<%= users23.getPortraitURL(themeDisplay23)%>'>
+          <div class="card-body">
+            <h4 class="card-title font-weight-bold"><%= users23.getFullName()%></h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            
+          </div>
+        </div>
+                  
+                </div>
+              </div>
+              
+             <%} %>
+            </div>
+             
+            <a class="carousel-control-prev" href="#recipeCarousel2" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#recipeCarousel2" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+            
+          </div>
+        </div>
+       
+      </div>
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+  
+</div>
+</div>
+<style>
+
+.carousel-inner.vv-3 .carousel-item.active,
+.carousel-inner.vv-3 .carousel-item-next,
+.carousel-inner.vv-3 .carousel-item-prev {
+  display: flex;
+}
+
+.carousel-inner.vv-3 .carousel-item-right.active,
+.carousel-inner.vv-3 .carousel-item-next {
+  transform: translateX(7%);
+}
+
+.carousel-inner.vv-3 .carousel-item-left.active,
+.carousel-inner.vv-3 .carousel-item-prev {
+  transform: translateX(-7%);
+}
+
+.carousel-inner.vv-3 .carousel-item-right,
+.carousel-inner.vv-3 .carousel-item-left {
+  transform: translateX(0);
+}
+h4.card-title.font-weight-bold {
+    color: black;
+}
+.cumple > .card > .card-text{
+color:black;
+}
+</style>
 	
 	<script>
-	var timer = 4000;
+	$('.carousel .carousel-item').each(function () {
+		  var next = $(this).next();
+		  if (!next.length) {
+		    next = $(this).siblings(':first');
+		  }
+		  next.children(':first-child').clone().appendTo($(this));
 
-	var i = 0;
-	var max = $('.body-cumple > #c > li').length;
-	console.log(max);
-	 
-		$(" #c > .perfil").eq(i).addClass('active').css('left','0');
-		$(" #c > .perfil").eq(i + 1).addClass('active').css('left','25%');
-		$(" #c > .perfil").eq(i + 2).addClass('active').css('left','50%');
-		$(" #c > .perfil").eq(i + 3).addClass('active').css('left','75%');
-	 
+		  for (var i = 0; i < 4; i++) {
+		    next = next.next();
+		    if (!next.length) {
+		      next = $(this).siblings(':first');
+		      console.log(next);
+		    }
 
-		setInterval(function(){ 
-
-			$(".body-cumple #c > li").removeClass('active');
-
-			$(" #c > .perfil").eq(i).css('transition-delay','0.25s');
-			$(" #c > .perfil").eq(i + 1).css('transition-delay','0.5s');
-			$(" #c > .perfil").eq(i + 2).css('transition-delay','0.75s');
-			$(" #c > .perfil").eq(i + 3).css('transition-delay','1s');
-			console.log(i);
-			if (i < max-4) {
-				i = i+4; 
-			}
-
-			else { 
-				i = 0; 
-			}  
-
-			$(" #c > .perfil").eq(i).css('left','0').addClass('active').css('transition-delay','1.25s');
-			$(" #c > .perfil").eq(i + 1).css('left','25%').addClass('active').css('transition-delay','1.5s');
-			$(" #c > .perfil").eq(i + 2).css('left','50%').addClass('active').css('transition-delay','1.75s');
-			$(" #c > .perfil").eq(i + 3).css('left','75%').addClass('active').css('transition-delay','2s');
-		
-		}, timer);
-	 
-	
+		    next.children(':first-child').clone().appendTo($(this));
+		  }
+		});
 	</script>
+	
+	
+	
+	

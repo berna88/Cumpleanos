@@ -1,7 +1,7 @@
 Bundle-Name: Cumpleanos
-Bundle-SymbolicName: com.consistent.cuervo
+Bundle-SymbolicName: com.consistent.cumpleanos
 Bundle-Version: 1.0.0
-Export-Package: com.consistent.cuervo.constants
+Export-Package: com.consistent.cumpleanos.constants
 -contract: JavaPortlet,JavaServlet
 -jsp: *.jsp,*.jspf
 -plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
