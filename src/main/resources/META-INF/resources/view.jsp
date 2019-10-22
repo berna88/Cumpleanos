@@ -117,8 +117,8 @@ img.d-block.img-fluid.card-img-top {
 }
 .cumple.container-fluid {
 background-image: url("http://www.cuervo.consistent.com.mx:8080/documents/66428/66438/fondo-cumplecuervo.png/18b657db-18a8-39f5-794e-75686fa6fde4?t=1571509059573");
-/*background-repeat: no-repeat;
-*/
+background-repeat: no-repeat;
+background-size: cover;
 }
     
 </style>
