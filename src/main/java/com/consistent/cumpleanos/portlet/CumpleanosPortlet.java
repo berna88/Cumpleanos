@@ -55,23 +55,32 @@ public class CumpleanosPortlet extends MVCPortlet {
 		List<User> users = UserLocalServiceUtil.getUsers(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 		Cumpleanos cumpleanos;
 		  for(User user: users) { 
-				  try { 
-			      Date fechaUser = user.getBirthday(); 
-				  String todayAsString = df.format(fechaUser);
-				  cumpleanos = new Cumpleanos(todayAsString, "America/Montreal", "MM/dd/yyyy");
-				  if(cumpleanos.isBirthday()) {
-					  usersFilter.add(user);
-					  long po = user.getPortraitId();
-					  Image image = ImageLocalServiceUtil.getImage(po);
-					  log.info(image);
-				  }
+				  try {
+					 if(!user.isDefaultUser()) {
+						 if(!user.getFullName().contains("Test")) {
+							 Date fechaUser = user.getBirthday(); 
+							  String todayAsString = df.format(fechaUser);
+							  cumpleanos = new Cumpleanos(todayAsString, "America/Montreal", "MM/dd/yyyy");
+							  if(cumpleanos.isBirthday()) {
+								  try {
+									  usersFilter.add(user);
+									  long po = user.getPortraitId();
+									  Image image = ImageLocalServiceUtil.getImage(po);
+									  log.info(image);
+								} catch (Exception e) {
+									// TODO: handle exception
+									log.error(e.getCause());
+								}
+								  
+							  }
+						 }
+					 }
+			      
 			  	  }catch (PortalException e) { 
 			  	// TODO Auto-generated catch block
 			    e.printStackTrace(); 
 			    } 
 		  }
-		  log.info("Usuarios filtrados: "+usersFilter.size());
-		  
 		  renderRequest.setAttribute("Users", usersFilter);
 		 
 		super.render(renderRequest, renderResponse);
