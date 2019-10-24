@@ -26,7 +26,7 @@ List<User> users = (List<User>) request.getAttribute("Users");
     <div class="col-md-12 mb-4">
 
       <div class="container text-center my-3" style="
-    margin-top: 15%!important;
+    margin-top: 6%!important;
 ">
       <h2 class="titulon1 text-center mb-50">Cumpleañeros</h2>
        
@@ -49,7 +49,9 @@ List<User> users = (List<User>) request.getAttribute("Users");
             <img class="d-block img-fluid card-img-top"
                     src='<%= users23.getPortraitURL(themeDisplay23)%>'>
           <div class="card-body">
-            <h4 class="card-title font-weight-bold"><%= users23.getFullName()%></h4>
+            <h4 class="card-title font-weight-bold"><%= users23.getFirstName()%></h4>
+            <h4 class="card-title font-weight-bold"><%= users23.getLastName()%></h4>
+            
            <p class="card-text"><span style="font-weight: 700;">Departamento: </span><%= users23.getExpandoBridge().getAttribute("Departamento")%> </p>
              <div><i class="fas fa-map-marker-alt"></i> <%= users23.getExpandoBridge().getAttribute("LocalidadesAdmin")%> </div>
           </div>
@@ -114,11 +116,41 @@ img.d-block.img-fluid.card-img-top {
     }
     h4.card-title.font-weight-bold {
     color: white;
+     font-size: 1.4rem;
+}
+
+.titulon1.text-center.mb-50 {
+    margin-bottom: 20px !important;
+    font-size: 50px;
+}
+#fecha {
+
+    font-weight: 600;
+    margin-bottom: 5%;
+    text-shadow: 2px 2px 2px black;
+
+}
+
+img.d-block.img-fluid.card-img-top {
+    border-radius: 50%;
+    box-shadow: 2px 2px 6px 2px black;
+   
 }
 .cumple.container-fluid {
-background-image: url("http://www.cuervo.consistent.com.mx:8080/documents/66428/66438/fondo-cumplecuervo.png/18b657db-18a8-39f5-794e-75686fa6fde4?t=1571509059573");
-background-repeat: no-repeat;
-background-size: cover;
+
+    background-image: url("http://www.cuervo.consistent.com.mx:8080/documents/66428/66438/fondo-cumplecuervo.png/18b657db-18a8-39f5-794e-75686fa6fde4?t=1571509059573");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+@media screen and (max-width: 414px) {
+ .titulon1 {
+
+    font-size: 45px!important;
+   
+    }
 }
     
 </style>
