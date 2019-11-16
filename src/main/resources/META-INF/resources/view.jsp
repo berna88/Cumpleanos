@@ -17,7 +17,7 @@ List<User> users = (List<User>) request.getAttribute("Users");
 	
 	
 	
-	<div class="cumple container-fluid">
+	<div class="cumple container-fluid" style="background-image: url('<%=request.getContextPath()+"/img/fondo-cumplecuervo.png"%>');">
 
   <!-- Grid row -->
   <div class="row">
@@ -52,8 +52,30 @@ List<User> users = (List<User>) request.getAttribute("Users");
             <h4 class="card-title font-weight-bold"><%= users23.getFirstName()%></h4>
             <h4 class="card-title font-weight-bold"><%= users23.getLastName()%></h4>
             
-           <p class="card-text"><span style="font-weight: 700;">Departamento: </span><%= users23.getExpandoBridge().getAttribute("Departamento")%> </p>
-             <div><i class="fas fa-map-marker-alt"></i> <%= users23.getExpandoBridge().getAttribute("LocalidadesAdmin")%> </div>
+           <p class="card-text"><span style="font-weight: 700;">Departamento: </span><%= users23.getExpandoBridge().getAttribute("Desc_Depto")%> </p>
+            <%if (users23.getExpandoBridge().getAttribute("Tienda_localidad").equals("SFE")){ %>
+             <div><i class="fas fa-map-marker-alt"></i> Santa Fe México </div>
+              <% }else if (users23.getExpandoBridge().getAttribute("Tienda_localidad").equals("CMX")){%>
+             
+                <div><i class="fas fa-map-marker-alt"></i> CeDis México </div>
+                <% }else if (users23.getExpandoBridge().getAttribute("Tienda_localidad").equals("EDI")){%>
+             
+                <div><i class="fas fa-map-marker-alt"></i> Edisa</div>
+                 <% }else if (users23.getExpandoBridge().getAttribute("Tienda_localidad").equals("AGR")){%>
+             
+                <div><i class="fas fa-map-marker-alt"></i> Agricola</div>
+                  <% }else if (users23.getExpandoBridge().getAttribute("Tienda_localidad").equals("CAM")){%>
+             
+                <div><i class="fas fa-map-marker-alt"></i> Camichines</div>
+                <% }else if (users23.getExpandoBridge().getAttribute("Tienda_localidad").equals("ROJ")){%>
+             
+                <div><i class="fas fa-map-marker-alt"></i> Rojeña</div>
+                   <% }else if (users23.getExpandoBridge().getAttribute("Tienda_localidad").equals("CGL")){%>
+             
+                <div><i class="fas fa-map-marker-alt"></i> Cedis GDL</div>
+              <%}else{ %>
+               <div><i class="fas fa-map-marker-alt"></i> <%= users23.getExpandoBridge().getAttribute("Tienda_localidad")%> </div>
+              <%} %>
           </div>
         </div>
                   
@@ -138,7 +160,8 @@ img.d-block.img-fluid.card-img-top {
 }
 .cumple.container-fluid {
 
-    background-image: url("http://www.cuervo.consistent.com.mx:8080/documents/66428/66438/fondo-cumplecuervo.png/18b657db-18a8-39f5-794e-75686fa6fde4?t=1571509059573");
+   /* background-image: url("http://www.cuervo.consistent.com.mx:8080/documents/66428/66438/fondo-cumplecuervo.png/18b657db-18a8-39f5-794e-75686fa6fde4?t=1571509059573");
+    */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
