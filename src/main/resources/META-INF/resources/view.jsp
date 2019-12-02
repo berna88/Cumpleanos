@@ -86,6 +86,16 @@ List<User> users = (List<User>) request.getAttribute("Users");
             
            
           </div><!-- carousel-inner w-100  -->
+          
+           <a class="carousel-control-prev" href="#recipeCarousel2" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#recipeCarousel2" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          
         </div><!-- recipeCarousel2 -->
        
       </div><!-- row mx-auto my-auto -->
@@ -166,6 +176,20 @@ img.d-block.img-fluid.card-img-top {
     background-size: cover;
     background-position: center;
 
+}
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3%!important;
+    color: #FFF;
+    text-align: center;
+    opacity: 1.5;
+    transition: opacity 0.15s ease;
 }
 
 @media screen and (max-width: 414px) {
