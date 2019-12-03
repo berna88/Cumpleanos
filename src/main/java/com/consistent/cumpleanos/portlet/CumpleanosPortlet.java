@@ -14,6 +14,7 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,7 +51,7 @@ public class CumpleanosPortlet extends MVCPortlet {
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
 		
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		List<User> usersFilter = new ArrayList<User>();
 		List<User> users = UserLocalServiceUtil.getUsers(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 		Cumpleanos cumpleanos;
@@ -58,9 +59,14 @@ public class CumpleanosPortlet extends MVCPortlet {
 				  try {
 					 if(!user.isDefaultUser()) {
 						 if(!user.getFullName().contains("Test")) {
-							 Date fechaUser = user.getBirthday(); 
+							 
+							 //Date fechaUser = user.getBirthday(); 
+							 String fecha = (String) user.getExpandoBridge().getAttribute("Birthday");
+							 if (!fecha.isEmpty()) {
+							 log.info(fecha);
+							 Date fechaUser=new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
 							  String todayAsString = df.format(fechaUser);
-							  cumpleanos = new Cumpleanos(todayAsString, "America/Montreal", "MM/dd/yyyy");
+							  cumpleanos = new Cumpleanos(todayAsString, "America/Montreal", "yyyy-MM-dd");
 							  if(cumpleanos.isBirthday()) {
 								  try {
 									  usersFilter.add(user);
@@ -73,13 +79,15 @@ public class CumpleanosPortlet extends MVCPortlet {
 								}
 								  
 							  }
+							 }  
+							  
 						 }
 					 }
 			      
-			  	  }catch (PortalException e) { 
-			  	// TODO Auto-generated catch block
-			    e.printStackTrace(); 
-			    } 
+			  	  }catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} 
 		  }
 		  renderRequest.setAttribute("Users", usersFilter);
 		 
