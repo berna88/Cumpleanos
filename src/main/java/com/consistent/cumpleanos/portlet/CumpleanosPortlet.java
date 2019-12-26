@@ -63,7 +63,7 @@ public class CumpleanosPortlet extends MVCPortlet {
 							 //Date fechaUser = user.getBirthday(); 
 							 String fecha = (String) user.getExpandoBridge().getAttribute("Birthday");
 							 if (!fecha.isEmpty()) {
-							 log.info(fecha);
+							// log.info(fecha);
 							 Date fechaUser=new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
 							  String todayAsString = df.format(fechaUser);
 							  cumpleanos = new Cumpleanos(todayAsString, "America/Montreal", "yyyy-MM-dd");
@@ -72,7 +72,7 @@ public class CumpleanosPortlet extends MVCPortlet {
 									  usersFilter.add(user);
 									  long po = user.getPortraitId();
 									  Image image = ImageLocalServiceUtil.getImage(po);
-									  log.info(image);
+									//  log.info(image);
 								} catch (Exception e) {
 									// TODO: handle exception
 									log.error(e.getCause());
