@@ -38,10 +38,12 @@ List<User> users = (List<User>) request.getAttribute("Users");
             <%for(User users23:users ){ %>
               <% if (us++ <= 1) {%>
              <!--   <%=us++ %>-->
+            
               <div class="carousel-item active">
               <% }else{%>
-              <div class="carousel-item ">
                <!--<%=us++ %>-->
+              <div class="carousel-item ">
+              
               <%} %>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                  <div class="card mb-2">
@@ -214,64 +216,18 @@ img.d-block.img-fluid.card-img-top {
 		    next = next.next();
 		    if (!next.length) {
 		      next = $(this).siblings(':first');
-		      console.log(next);
+		      break;
+		      
 		    }
 
 		    next.children(':first-child').clone().appendTo($(this));
+		   
+		    
 		  }
 		});
 	</script>
-	<script>
-var today = new Date();
-var dia = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0');
-var ano = today.getFullYear();
-
-var mes = getMes(mm);
-
-today =  dia + ' - ' + mes ;
-document.getElementById('fecha').innerHTML = today;
-function getMes(mes){
-	switch (mes) {
-	case "01": 
-		return "Enero";
-	break;
-	case "02": 
-		return "Febrero";
-	break;
-	case "03": 
-		return "Marzo";
-	break;
-	case "04": 
-		return "Abril";
-	break;
-	case "05": 
-		return "Mayo";
-	break;
-	case "06": 
-		return "Junio";
-	break;
-	case "07": 
-		return "Julio";
-	break;
-	case "08": 
-		return "Agosto";
-	break;
-	case "09": 
-		return "Septiembre";
-	break;
-	case "10": 
-		return "Octubre";
-	break;
-	case "11": 
-		return "Noviembre";
-	break;
-	case "12": 
-		return "Diciembre";
-	break;
-}
-}
-</script>
+	<script src='<%=request.getContextPath()+"/js/cumple.js" %>'></script>
+	
 	
 	
 	
